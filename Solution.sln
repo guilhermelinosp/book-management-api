@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34408.163
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Book.Management.API", "Book.Management.API\Book.Management.API.csproj", "{4AEFA581-7900-4FB9-90F3-C08D36A639CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Book.Management.API", "Source\Book.Management.API\Book.Management.API.csproj", "{4AEFA581-7900-4FB9-90F3-C08D36A639CF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Book.Management.Domain", "Book.Management.Domain\Book.Management.Domain.csproj", "{44B7296A-91BA-4C04-B265-54B001966AE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Book.Management.Domain", "Source\Book.Management.Domain\Book.Management.Domain.csproj", "{44B7296A-91BA-4C04-B265-54B001966AE3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Book.Management.Application", "Book.Management.Application\Book.Management.Application.csproj", "{055FD1E5-6F91-4FB0-B48C-345E04787701}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Book.Management.Application", "Source\Book.Management.Application\Book.Management.Application.csproj", "{055FD1E5-6F91-4FB0-B48C-345E04787701}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book.Management.Infrastructure", "Book.Management.Infrastructure\Book.Management.Infrastructure.csproj", "{F52C0B06-EFE4-4EDE-AD8C-7E667B7F2C11}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book.Management.Infrastructure", "Source\Book.Management.Infrastructure\Book.Management.Infrastructure.csproj", "{F52C0B06-EFE4-4EDE-AD8C-7E667B7F2C11}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{28F3364B-D566-45ED-BBD6-4E47946A819E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,5 +41,11 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BCAD7B75-000E-4D3A-8410-69416E6F88A6}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4AEFA581-7900-4FB9-90F3-C08D36A639CF} = {28F3364B-D566-45ED-BBD6-4E47946A819E}
+		{055FD1E5-6F91-4FB0-B48C-345E04787701} = {28F3364B-D566-45ED-BBD6-4E47946A819E}
+		{44B7296A-91BA-4C04-B265-54B001966AE3} = {28F3364B-D566-45ED-BBD6-4E47946A819E}
+		{F52C0B06-EFE4-4EDE-AD8C-7E667B7F2C11} = {28F3364B-D566-45ED-BBD6-4E47946A819E}
 	EndGlobalSection
 EndGlobal
