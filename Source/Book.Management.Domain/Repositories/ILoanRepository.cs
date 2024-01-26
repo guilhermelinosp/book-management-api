@@ -6,6 +6,6 @@ namespace Book.Management.Domain.Repositories
     {
         public Task SaveChangesAsync();
         public Task AddLoanAsync(Loan loan);
-        public Task<Loan> GetLoanByIdAsync(int id);
+        public Task<Loan?> GetLoanByIdAsync(int id);
     }
 }

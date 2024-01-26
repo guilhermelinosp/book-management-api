@@ -3,18 +3,11 @@ using MediatR;
 
 namespace Book.Management.Application.Commands.User.UpdateUser
 {
-    public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand>
+    public class UpdateUserCommandHandler(IUserRepository userRepository) : IRequestHandler<UpdateUserCommand>
     {
-        private readonly IUserRepository _userRepository;
-
-        public UpdateUserCommandHandler(IUserRepository userRepository)
-        {
-            _userRepository = userRepository;
-        }
-
         public async Task Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.GetUserByIdAsync(request.Id);
+            var user = await userRepository.GetUserByIdAsync(request.Id);
             if (user is null)
                 return;
 
@@ -24,7 +17,7 @@ namespace Book.Management.Application.Commands.User.UpdateUser
 
             user.UpdatedAt = DateTime.Now;
 
-            await _userRepository.SaveChangesAsync();
+            await userRepository.SaveChangesAsync();
         }
     }
 }

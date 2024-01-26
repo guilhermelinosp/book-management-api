@@ -4,22 +4,15 @@ using MediatR;
 
 namespace Book.Management.Application.Queries.User.GetUserById
 {
-    public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, UserDetailsViewModel>
+    public class GetUserByIdQueryHandler(IUserRepository userRepository)
+        : IRequestHandler<GetUserByIdQuery, UserDetailsViewModel>
     {
-        private readonly IUserRepository _userRepository;
-        public GetUserByIdQueryHandler(IUserRepository userRepository)
-        {
-            _userRepository = userRepository;
-        }
-
         public async Task<UserDetailsViewModel> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.GetUserByIdAsync(request.Id);
-            if (user is null)
-                return null;
+            var user = await userRepository.GetUserByIdAsync(request.Id);
 
             return new UserDetailsViewModel(
-                user.Id,
+                user!.Id,
                 user.Name,
                 user.Email,
                 user.BirthDate,

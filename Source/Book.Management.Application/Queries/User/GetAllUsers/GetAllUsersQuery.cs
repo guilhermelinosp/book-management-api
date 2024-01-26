@@ -3,13 +3,8 @@ using MediatR;
 
 namespace Book.Management.Application.Queries.User.GetAllUsers
 {
-    public class GetAllUsersQuery : IRequest<List<UserViewModel>>
+    public class GetAllUsersQuery(string query) : IRequest<List<UserViewModel>>
     {
-        public GetAllUsersQuery(string query)
-        {
-            Query = query;
-        }
-
-        public string Query { get; private set; }
+        public string Query { get; private set; } = query;
     }
 }

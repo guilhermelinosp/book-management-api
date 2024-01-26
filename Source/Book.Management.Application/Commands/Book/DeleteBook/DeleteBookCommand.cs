@@ -2,13 +2,8 @@
 
 namespace Book.Management.Application.Commands.Book.DeleteBook
 {
-    public class DeleteBookCommand : IRequest
+    public class DeleteBookCommand(int id) : IRequest
     {
-        public DeleteBookCommand(int id)
-        {
-            Id = id;
-        }
-
-        public int Id { get; private set; }
+        public int Id { get; private set; } = id;
     }
 }

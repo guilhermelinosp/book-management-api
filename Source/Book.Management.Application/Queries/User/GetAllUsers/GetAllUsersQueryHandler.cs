@@ -4,17 +4,12 @@ using MediatR;
 
 namespace Book.Management.Application.Queries.User.GetAllUsers
 {
-    public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, List<UserViewModel>>
+    public class GetAllUsersQueryHandler(IUserRepository userRepository)
+        : IRequestHandler<GetAllUsersQuery, List<UserViewModel>>
     {
-        private readonly IUserRepository _userRepository;
-        public GetAllUsersQueryHandler(IUserRepository userRepository)
-        {
-            _userRepository = userRepository;
-        }
-
         public async Task<List<UserViewModel>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
         {
-            var users = await _userRepository.GetAllUsersAsync();
+            var users = await userRepository.GetAllUsersAsync();
             var userDetails = users
                     .Select(u => new UserViewModel(u.Id, u.Name, u.Email, u.BirthDate))
                     .ToList();

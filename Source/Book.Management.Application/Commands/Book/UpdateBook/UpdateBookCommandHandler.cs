@@ -3,18 +3,11 @@ using MediatR;
 
 namespace Book.Management.Application.Commands.Book.UpdateBook
 {
-    public class UpdateBookCommandHandler : IRequestHandler<UpdateBookCommand>
+    public class UpdateBookCommandHandler(IBookRepository bookRepository) : IRequestHandler<UpdateBookCommand>
     {
-        private readonly IBookRepository _bookRepository;
-
-        public UpdateBookCommandHandler(IBookRepository bookRepository)
-        {
-            _bookRepository = bookRepository;
-        }
-
         public async Task Handle(UpdateBookCommand request, CancellationToken cancellationToken)
         {
-            var book = await _bookRepository.GetBookByIdAsync(request.Id);
+            var book = await bookRepository.GetBookByIdAsync(request.Id);
             if (book is null)
                 return;
 
@@ -24,7 +17,7 @@ namespace Book.Management.Application.Commands.Book.UpdateBook
             book.PublishedYear = request.PublishedYear;
             book.UpdatedAt = DateTime.Now;
 
-            await _bookRepository.SaveChangesAsync();
+            await bookRepository.SaveChangesAsync();
         }
     }
 }

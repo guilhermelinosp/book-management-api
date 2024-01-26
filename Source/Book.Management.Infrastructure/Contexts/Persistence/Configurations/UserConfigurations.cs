@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Book.Management.Infrastructure.Configurations
+namespace Book.Management.Infrastructure.Contexts.Persistence.Configurations
 {
     public class UserConfigurations : IEntityTypeConfiguration<User>
     {

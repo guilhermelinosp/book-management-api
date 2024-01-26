@@ -1,45 +1,30 @@
-using Book.Management.Application.Commands.Book.CreateBook;
-using Book.Management.Application.Validators.User;
-using Book.Management.Domain.Repositories;
-using Book.Management.Infrastructure.Persistence;
-using Book.Management.Infrastructure.Persistence.Repositories;
-using BookManager.Infrastructure.Persistence;
-using FluentValidation;
-using FluentValidation.AspNetCore;
-using Microsoft.EntityFrameworkCore;
+using Book.Management.Application;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
-//DbContext
-var connectionString = builder.Configuration.GetConnectionString("BookManagerCs");
-builder.Services.AddDbContext<BookManagerDbContext>(p => p.UseSqlServer(connectionString));
+var configuration = builder.Configuration;
+var service = builder.Services;
 
-//Repository
-builder.Services.AddScoped<IBookRepository, BookRepository>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<ILoanRepository, LoanRepository>();
-
-//FluentValidation
-builder
-    .Services
-    .AddValidatorsFromAssemblyContaining<CreateUserCommandValidator>()
-    .AddFluentValidationAutoValidation()
-    .AddFluentValidationClientsideAdapters();
-
-//CQRS - MediatR
-builder.Services.AddMediatR(op => op.RegisterServicesFromAssemblyContaining(typeof(CreateBookCommand)));
+await service.AddApplicationInjection(configuration);
+service.AddControllers();
+service.AddEndpointsApiExplorer();
+service.AddSwaggerGen();
 
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+	app.UseDeveloperExceptionPage();
+	configuration.AddUserSecrets<Program>();
+}
+else
+{
+	app.UseHsts();
 }
 
+app.UseSwagger();
+
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 

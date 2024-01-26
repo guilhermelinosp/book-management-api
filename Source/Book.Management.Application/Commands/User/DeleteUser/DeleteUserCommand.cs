@@ -2,13 +2,8 @@
 
 namespace Book.Management.Application.Commands.User.DeleteUser
 {
-    public class DeleteUserCommand : IRequest
+    public class DeleteUserCommand(int id) : IRequest
     {
-        public DeleteUserCommand(int id)
-        {
-            Id = id;
-        }
-
-        public int Id { get; private set; }
+        public int Id { get; private set; } = id;
     }
 }

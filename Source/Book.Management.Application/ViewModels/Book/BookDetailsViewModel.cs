@@ -1,22 +1,18 @@
 ﻿namespace Book.Management.Application.ViewModels.Book
 {
-    public class BookDetailsViewModel
+    public class BookDetailsViewModel(
+        int id,
+        string title,
+        string author,
+        string isbn,
+        DateTime publishedYear,
+        DateTime createdAt)
     {
-        public BookDetailsViewModel(int id, string title, string author, string isbn, DateTime publishedYear, DateTime createdAt)
-        {
-            Id = id;
-            Title = title;
-            Author = author;
-            Isbn = isbn;
-            PublishedYear = publishedYear;
-            CreatedAt = createdAt;
-        }
-
-        public int Id { get; private set; }
-        public string Title { get; private set; }
-        public string Author { get; private set; }
-        public string Isbn { get; private set; }
-        public DateTime PublishedYear { get; private set; }
-        public DateTime CreatedAt { get; private set; }
+        public int Id { get; private set; } = id;
+        public string Title { get; private set; } = title;
+        public string Author { get; private set; } = author;
+        public string Isbn { get; private set; } = isbn;
+        public DateTime PublishedYear { get; private set; } = publishedYear;
+        public DateTime CreatedAt { get; private set; } = createdAt;
     }
 }

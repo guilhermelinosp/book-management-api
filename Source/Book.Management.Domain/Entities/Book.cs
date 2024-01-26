@@ -1,28 +1,16 @@
 ﻿namespace Book.Management.Domain.Entities
 {
-    public class Book : BaseEntity
-    {
-        public Book(string title, string author, string isbn, DateTime publishedYear)
-        {
-            Title = title;
-            Author = author;
-            Isbn = isbn;
-            PublishedYear = publishedYear;
+	public class Book(string title, string author, string isbn, DateTime publishedYear)
+		: BaseEntity
+	{
+		public string Title { get; set; } = title;
+		public string Author { get; set; } = author;
+		public string Isbn { get; set; } = isbn;
+		public DateTime PublishedYear { get; set; } = publishedYear;
+		public DateTime UpdatedAt { get; set; } = DateTime.MinValue;
+		public bool Active { get; set; } = true;
 
-            CreatedAt = DateTime.Now;
-            UpdatedAt = DateTime.MinValue;
-            Active = true;
-        }
-
-        public string Title { get; set; }
-        public string Author { get; set; }
-        public string Isbn { get; set; }
-        public DateTime PublishedYear { get; set; }
-        public DateTime UpdatedAt { get; set; }
-        public bool Active { get; set; }
-
-        public DateTime CreatedAt { get; private set; }
-        public List<Loan> Loans { get; private set; }
-
-    }
+		public DateTime CreatedAt { get; private set; } = DateTime.Now;
+		public List<Loan>? Loans { get; private set; }
+	}
 }

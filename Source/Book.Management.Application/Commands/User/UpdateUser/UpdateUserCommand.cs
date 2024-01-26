@@ -2,16 +2,11 @@
 
 namespace Book.Management.Application.Commands.User.UpdateUser
 {
-    public class UpdateUserCommand : IRequest
+    public class UpdateUserCommand(int id, string name, string email) : IRequest
     {
-        public UpdateUserCommand(int id)
-        {
-            Id = id;
-        }
-
-        public int Id { get; private set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
+        public int Id { get; private set; } = id;
+        public string Name { get; set; } = name;
+        public string Email { get; set; } = email;
         public DateTime BirthDate { get; set; }
     }
 }
