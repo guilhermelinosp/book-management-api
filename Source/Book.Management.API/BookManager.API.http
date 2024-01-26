@@ -1,6 +1,0 @@
-@BookManager.API_HostAddress = http://localhost:5207
-
-GET {{BookManager.API_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
